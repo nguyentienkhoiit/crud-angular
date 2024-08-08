@@ -1,0 +1,6 @@
+<div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">Department name</span>
+    <input type="text" class="form-control" placeholder="Department name" [(ngModel)] = "DepartmentName">
+    <button  class="btn btn-success" (click)="addDepartment()" *ngIf="dep.DepartmentId==0">Add</button>
+    <button  class="btn btn-success" (click)="updateDepartment()" *ngIf="dep.DepartmentId!=0">Update</button>
+  </div>

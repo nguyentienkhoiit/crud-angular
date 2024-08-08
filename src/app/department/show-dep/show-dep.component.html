@@ -1,0 +1,48 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" 
+data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+(click) = "addClick()"
+data-backdrop="static" data-keyboard="false"
+>
+  Add department
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">{{ModalTitle}}</h5>
+        <button type="button" class="btn-close" 
+        data-bs-dismiss="modal" aria-label="Close" (click)="closeClick()"></button>
+      </div>
+      <div class="modal-body">
+        <app-add-edit-dep [dep]="dep" *ngIf="ActivateAddEditDepCom">
+
+        </app-add-edit-dep>
+      </div>
+    </div>
+  </div>
+</div>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of DepartmentList">
+        <td>{{item.DepartmentId}}</td>
+        <td>{{item.DepartmentName}}</td>
+        <td>
+            <button type="button" data-backdrop="static" data-keyboard="false" 
+            data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+            (click)="editClick(item)" class="btn btn-secondary">Edit</button>
+            <button type="button" (click)="deleteClick(item)" class="btn btn-success ms-1">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
